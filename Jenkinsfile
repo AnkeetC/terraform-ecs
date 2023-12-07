@@ -11,7 +11,7 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.example.com', 'docker-credentials') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockertoken') {
                         def customImage = docker.build("your-docker-image")
                         customImage.push()
                     }
