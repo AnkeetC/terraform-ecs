@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    tools {
+        terraform 'Terraform'
+    }
+    
     stages {
         stage('Checkout') {
             steps {
@@ -11,8 +15,8 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    sh 'terraform init -backend-config=config/backend.tfvars'
-                    sh 'terraform apply -auto-approve'
+                    sh '${tool "Terraform"}/terraform init -backend-config=config/backend.tfvars'
+                    sh '${tool "Terraform"}/terraform apply -auto-approve'
                 }
             }
         }
