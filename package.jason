@@ -1,0 +1,15 @@
+{
+  "name": "dockerized-node-app",
+  "version": "1.0.0",
+  "description": "A Dockerized Node.js app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Ankeet",
+  "license": "MIT",
+  "dependencies": {
+    "http": "0.0.0"
+  }
+}
+
