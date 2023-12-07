@@ -8,16 +8,16 @@ pipeline {
             }
         }
         
-        stage('Build and Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockertoken') {
-                        def customImage = docker.build("my-node-app")
-                        customImage.push()
-                    }
-                }
-            }
-        }
+        #stage('Build and Push Docker Image') {
+           # steps {
+              #  script {
+                 #   docker.withRegistry('https://index.docker.io/v1/', 'dockertoken') {
+                      #  def customImage = docker.build("my-node-app")
+                       # customImage.push()
+                   # }
+               # }
+           # }
+       # }
         
         stage('Terraform Apply') {
             steps {
