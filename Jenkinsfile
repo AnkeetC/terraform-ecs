@@ -11,7 +11,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    sh '${tool "Terraform"}/terraform init -backend-config=config/backend.tfvars'
+                    sh "${tool 'terraform'}/terraform init -backend-config=config/backend.tfvars"
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    sh '${tool "Terraform"}/terraform apply -auto-approve'
+                    sh "${tool 'terraform'}/terraform apply -auto-approve"
                 }
             }
         }
