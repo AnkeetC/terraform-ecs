@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockertoken') {
-                        def customImage = docker.build("your-docker-image")
+                        def customImage = docker.build("my-node-app")
                         customImage.push()
                     }
                 }
