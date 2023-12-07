@@ -12,10 +12,17 @@ pipeline {
             }
         }
         
-        stage('Terraform Apply') {
+        stage('Terraform Init') {
             steps {
                 script {
                     sh '${tool "Terraform"}/terraform init -backend-config=config/backend.tfvars'
+                }
+            }
+        }
+        
+        stage('Terraform Apply') {
+            steps {
+                script {
                     sh '${tool "Terraform"}/terraform apply -auto-approve'
                 }
             }
@@ -24,7 +31,10 @@ pipeline {
     
     post {
         success {
-            echo 'Deployment successful!'
+            script {
+                echo 'Deployment successful!'
+                // You can add additional post-success steps here
+            }
         }
     }
 }
