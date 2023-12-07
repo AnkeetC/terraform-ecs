@@ -16,14 +16,14 @@ pipeline {
             }
         }
         
-        stage('Terraform Apply') {
+     stage (" Action") {
             steps {
-                script {
-                    sh "${tool 'terraform'}/terraform apply -auto-approve"
-                }
-            }
+                echo "Terraform action is --> ${action}"
+                sh ('terraform ${action} --auto-approve') 
+           }
         }
     }
+}
     
     post {
         success {
