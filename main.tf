@@ -19,7 +19,7 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
 [
   {
     "name": "my-nodejs-app",
-    "image": "your-docker-image",
+    "image": "public.ecr.aws/o1g8e9s6/my-nodejs:latest",
     "essential": true,
     "portMappings": [
       {
