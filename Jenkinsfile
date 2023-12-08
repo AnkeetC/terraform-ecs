@@ -1,35 +1,32 @@
 pipeline {
     agent any
-    
-    environment {
-        action = 'apply' // Set the default action
-    }
 
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+            checkout scm
             }
         }
         
-        stage('Terraform Init') {
+        stage ("terraform init") {
             steps {
-                script {
-                    sh "${tool 'terraform'}/terraform init -reconfigure"
-                }
+                sh ('terraform init -reconfigure') 
             }
         }
-        
-        stage("Terraform Action") {
+        stage ("terraform plan") {
             steps {
-                script {
-                    echo "Terraform action is --> ${action}"
-                    sh "terraform ${action} --auto-approve"
-                }
+                sh ('terraform plan') 
             }
+        }
+                
+        stage ("terraform Action") {
+            steps {
+                echo "Terraform action is --> ${action}"
+                sh ('terraform ${action} --auto-approve') 
+           }
         }
     }
-    
+}
     post {
         success {
             script {
