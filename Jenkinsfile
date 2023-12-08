@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    environment {
+        action = 'apply' // Set the default action
+    }
+
     stages {
         stage('Checkout') {
             steps {
