@@ -1,31 +1,33 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-        
-        stage('Terraform Init') {
+
+        stage("terraform init") {
             steps {
-                script {
-                    sh "${tool 'terraform'}/terraform init"
-                }
+                sh 'terraform init -reconfigure'
             }
         }
         
-        stage("Terraform Action") {
+        stage("terraform plan") {
             steps {
-                script {
-                    echo "Terraform action is --> ${action}"
-                    sh "terraform ${action} --auto-approve"
-                }
+                sh 'terraform plan'
+            }
+        }
+                
+        stage("Terraform Action") {
+    steps {
+        echo "Executing Terraform action"
+        sh 'terraform destroy --auto-approve'
             }
         }
     }
-    
+
     post {
         success {
             script {
@@ -35,4 +37,3 @@ pipeline {
         }
     }
 }
-
