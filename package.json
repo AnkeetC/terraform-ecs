@@ -9,7 +9,6 @@
   "author": "Ankeet",
   "license": "MIT",
   "dependencies": {
-    "http": "0.0.0"
+    "express": "^4.17.1"
   }
 }
-
