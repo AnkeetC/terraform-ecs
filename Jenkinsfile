@@ -27,14 +27,6 @@ pipeline {
             }
         }
     }
-    #stage("Terraform Action") {
-           # steps {
-               # script {
-                   # echo "Terraform action is --> ${action}"
-                   # sh "terraform ${action} --auto-approve"
-              # }
-           #}
-    #}
     post {
         success {
             script {
